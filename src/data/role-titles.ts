@@ -1,0 +1,16 @@
+export const ROLE_TITLES = [
+  "Mobile Developer",
+  "React Native",
+  "Expo",
+  "Android",
+  "iOS",
+  "SOLID",
+  "Architecture",
+  "Zustand",
+  "Redux",
+  "MMKV",
+  "React Query",
+  "TypeScript",
+  "NodeJS",
+  "Zod",
+];
