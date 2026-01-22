@@ -1,11 +1,11 @@
-import React from "react"
-import { Header } from "./header"
-import { HeroBackground } from "./hero-background"
+import React from "react";
+import { Header } from "./header";
+import { HeroBackground } from "./hero-background";
 
 export const LayoutWithHeader = ({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) => {
   return (
     <div className="font-[family-name:var(--font-exo2)] font-medium w-screen">
@@ -16,9 +16,9 @@ export const LayoutWithHeader = ({
           {children}
         </main>
         <footer className="text-sm md:text-lg row-start-3 flex gap-[24px] flex-wrap items-center justify-center text-zinc-600 p-4">
-          © 2025 Kinh Bach. All rights reserved.
+          © 2026 Ramon Dias. Todos os direitos reservados.
         </footer>
       </HeroBackground>
     </div>
-  )
-}
+  );
+};

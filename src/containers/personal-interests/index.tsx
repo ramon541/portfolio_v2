@@ -1,28 +1,23 @@
-"use client"
+"use client";
 
-import { Pointer } from "@/components/magicui/pointer"
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid"
-import { EvervaultCard } from "@/components/ui/evervault-card"
-import { cn } from "@/lib/utils"
-import { IconClipboardCopy } from "@tabler/icons-react"
-import { Blocks, Music2, Rss } from "lucide-react"
-import { motion } from "motion/react"
-import { useEffect, useState } from "react"
-import { SpotifyPlaylist } from "./spotify-playlist"
-import { StackCloud } from "./stack-cloud"
-import { BlurImage } from "@/components/ui/apple-cards-carousel"
-import { LEARNING_RESOURCES } from "@/data/learning-resource"
+import { Pointer } from "@/components/magicui/pointer";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { EvervaultCard } from "@/components/ui/evervault-card";
+import { cn } from "@/lib/utils";
+import { IconClipboardCopy } from "@tabler/icons-react";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 export function PersonalInterests() {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     return (
       <div className="w-full h-[352px] rounded-xl bg-gray-200 dark:bg-gray-800 animate-pulse" />
-    )
+    );
   }
   return (
     <>
@@ -39,7 +34,7 @@ export function PersonalInterests() {
         ))}
       </BentoGrid>
     </>
-  )
+  );
 }
 
 const SkeletonOne = () => {
@@ -56,8 +51,8 @@ const SkeletonOne = () => {
             download
             className="flex flex-col items-center justify-center"
           >
-            Resume
-            <div className="text-sm text-gray-500">(Click to download)</div>
+            Currículo
+            <div className="text-sm text-gray-500">(Clique para baixar)</div>
           </a>
         }
       />
@@ -96,113 +91,15 @@ const SkeletonOne = () => {
         </motion.div>
       </Pointer>
     </motion.div>
-  )
-}
-const SkeletonTwo = () => {
-  return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2 "
-    >
-      <div className="relative flex h-full w-full flex-col items-center justify-center">
-        <StackCloud />
-        <Pointer>
-          <div className="text-2xl">👆</div>
-        </Pointer>
-      </div>
-    </motion.div>
-  )
-}
-const SkeletonThree = () => {
-  const variants = {
-    initial: {
-      backgroundPosition: "0 50%",
-    },
-    animate: {
-      backgroundPosition: ["0, 50%", "100% 50%", "0 50%"],
-    },
-  }
-  return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={variants}
-      transition={{
-        duration: 5,
-        repeat: Number.POSITIVE_INFINITY,
-        repeatType: "reverse",
-      }}
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-    >
-      <motion.div className="h-full w-full rounded-lg flex-1">
-        <SpotifyPlaylist />
-      </motion.div>
-    </motion.div>
-  )
-}
-const SkeletonFour = () => {
-  const first = {
-    initial: {
-      x: 20,
-      rotate: -5,
-    },
-    hover: {
-      x: 0,
-      rotate: 0,
-    },
-  }
-  const second = {
-    initial: {
-      x: -20,
-      rotate: 5,
-    },
-    hover: {
-      x: 0,
-      rotate: 0,
-    },
-  }
-  return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
-    >
-      {LEARNING_RESOURCES.map(
-        ({ href, imgSrc, alt, description, imageWrapperClass }, index) => {
-          const variant = index === 0 ? first : index === 2 ? second : undefined
-
-          return (
-            <motion.a
-              key={href}
-              variants={variant}
-              className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center cursor-none relative z-20"
-              href={href}
-              target="_blank"
-            >
-              <div className={imageWrapperClass}>
-                <BlurImage src={imgSrc} alt={alt} height={100} width={100} />
-              </div>
-              <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-                {description}
-              </p>
-            </motion.a>
-          )
-        }
-      )}
-      <Pointer className="fill-blue-500" />
-    </motion.div>
-  )
-}
+  );
+};
 
 const items = [
   {
-    title: "Download My Resume",
+    title: "Baixe o meu Currículo",
     description: (
       <span className="text-sm">
-        A quick summary of my experience, projects, and skills — available for
+        Um resumo da minha experiência, projetos e habilidades — disponível para
         download.
       </span>
     ),
@@ -210,38 +107,4 @@ const items = [
     className: "md:col-span-1",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
-  {
-    title: "Tech Stack",
-    description: (
-      <span className="text-sm">
-        The tools I rely on to build performant, modern web apps.
-      </span>
-    ),
-    header: <SkeletonTwo />,
-    className: "md:col-span-1",
-    icon: <Blocks className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "Music & Mood",
-    description: (
-      <span className="text-sm">
-        From deep focus to feel-good vibes, I create playlists that fuel my day
-        — &ldquo;Working Energy&ldquo; is one of my favorites.
-      </span>
-    ),
-    header: <SkeletonThree />,
-    className: "md:col-span-1 row-span-2 min-h-[520px]",
-    icon: <Music2 className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "Go-To Dev Blogs",
-    description: (
-      <span className="text-sm">
-        Where I learn, stay up-to-date, and explore new frontend trends.
-      </span>
-    ),
-    header: <SkeletonFour />,
-    className: "md:col-span-2",
-    icon: <Rss className="h-4 w-4 text-neutral-500" />,
-  },
-]
+];

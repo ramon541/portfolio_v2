@@ -1,69 +1,67 @@
-import { LayoutWithHeader } from "@/components/layout/layout-with-header"
-import { ThemeProvider } from "@/components/theme-provider"
-import "@/styles/globals.css"
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import type { Metadata } from "next"
+import { LayoutWithHeader } from "@/components/layout/layout-with-header";
+import { ThemeProvider } from "@/components/theme-provider";
+import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
 
-import { Exo_2 } from "next/font/google"
+import { Exo_2 } from "next/font/google";
 
 const exo2 = Exo_2({
   subsets: ["latin", "vietnamese", "cyrillic"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-exo2",
-})
+});
 
 export const metadata: Metadata = {
-  title: "Kinh Bach | Frontend Developer Portfolio",
+  title: "Ramon Dias | Portfólio de Desenvolvedor Mobile",
   description:
-    "Explore Kinh Bach's portfolio – a skilled Frontend Developer specializing in Next.js, React, and modern web technologies. Showcasing innovative projects, UI/UX expertise, and high-performance web applications.",
+    "Explore o portfólio de Ramon Dias — Desenvolvedor Mobile especializado em React Native, Expo, TypeScript e tecnologias modernas para aplicações mobile.",
   keywords: [
-    "Frontend Developer",
-    "Next.js Developer",
-    "React Developer",
-    "Kinh Bach Portfolio",
-    "Web Development",
-    "UI/UX Design",
-    "JavaScript",
+    "Desenvolvedor Mobile",
+    "Desenvolvedor Android",
+    "Desenvolvedor iOS",
+    "React Native",
+    "Expo",
     "TypeScript",
-    "Modern Web Technologies",
+    "Portfólio Ramon Dias",
+    "Desenvolvimento Mobile",
+    "Tecnologias Mobile Modernas",
   ],
   openGraph: {
-    title: "Kinh Bach | Frontend Developer Portfolio",
+    title: "Ramon Dias | Portfólio de Desenvolvedor Mobile",
     description:
-      "Discover Kinh Bach's expertise in Frontend Development, React, and Next.js. View projects, case studies, and technical skills.",
-    url: "https://kinhdev.id.vn",
+      "Conheça a experiência de Ramon Dias em desenvolvimento mobile com React Native e Expo. Veja projetos, estudos de caso e habilidades técnicas.",
+    url: "https://ramondias.dev.br",
     type: "website",
     images: [
       {
-        url: "https://voocgavdbpy2gucg.public.blob.vercel-storage.com/open-graph-6fkPvt3jl60AhDWy2pPhfp3PKoZPrZ.png",
+        url: "/images/banner.png",
         width: 1200,
         height: 630,
-        alt: "Kinh Bach - Frontend Developer Portfolio",
+        alt: "Ramon Dias - Portfólio de Desenvolvedor Mobile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kinh Bach | Frontend Developer Portfolio",
+    title: "Ramon Dias | Portfólio de Desenvolvedor Mobile",
     description:
-      "Explore Kinh Bach's frontend projects and expertise in React, Next.js, and modern web development.",
-    images: [
-      "https://voocgavdbpy2gucg.public.blob.vercel-storage.com/open-graph-6fkPvt3jl60AhDWy2pPhfp3PKoZPrZ.png",
-    ],
+      "Explore projetos mobile e a experiência de Ramon Dias com React Native, Expo e desenvolvimento mobile moderno.",
+    images: ["/images/banner.png"],
   },
   icons: {
     icon: "/favicon.ico",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${exo2.variable} antialiased scroll-smooth w-full max-w-dvw overflow-x-hidden`}
       >
@@ -78,5 +76,5 @@ export default function RootLayout({
         <SpeedInsights />
       </body>
     </html>
-  )
+  );
 }

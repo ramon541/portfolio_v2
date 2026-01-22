@@ -103,8 +103,8 @@ export const MyUniverse = () => {
           Desenvolvedor Mobile 📱 | React Native • Expo
           <br />{" "}
           <span className="font-normal italic">
-            Desenvolvendo aplicações mobile escaláveis e modernas com código
-            limpo, eficiente e foco na experiência do usuário
+            Desenvolvo aplicações mobile escaláveis e modernas com código limpo,
+            eficiente e com foco na experiência do usuário
           </span>
           📱✨
         </div>
@@ -121,8 +121,8 @@ export function CompareDemo() {
   return (
     <div className="w-full border rounded-3xl dark:bg-neutral-900 bg-neutral-100 border-neutral-200 dark:border-neutral-800">
       <Compare
-        firstImage="https://voocgavdbpy2gucg.public.blob.vercel-storage.com/portfolio/image%20%283%29-9ohWXR6mPsqfP9GC3OXB6l23pKXqpS.png"
-        secondImage="https://voocgavdbpy2gucg.public.blob.vercel-storage.com/portfolio/image%20%284%29-Z38KH4uoJOoyhY6YDXVDNxRu8uWZUS.png"
+        firstImage="/images/compare/compare1.png"
+        secondImage="/images/compare/compare2.png"
         firstImageClassName="object-cover object-left-top"
         secondImageClassname="object-cover object-left-top"
         className="h-[200px] sm:h-[250px] md:h-[400px] lg:h-[500px] w-full"

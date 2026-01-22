@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
-import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
-import { Badge } from "@/components/ui/badge"
-import { GlowingEffect } from "@/components/ui/glowing-effect"
-import { MY_NETWORKS } from "@/data/my-networks"
-import { Code, Layers, UserRound, Zap } from "lucide-react"
-import { useTheme } from "next-themes"
-import { MyResume } from "../my-resume"
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
+import { Badge } from "@/components/ui/badge";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { MY_NETWORKS } from "@/data/my-networks";
+import { Code, Layers, UserRound, Zap } from "lucide-react";
+import { useTheme } from "next-themes";
+import { MyResume } from "../my-resume";
 
 export function MyInformation() {
   return (
@@ -56,19 +56,16 @@ export function MyInformation() {
                 <div className="flex w-full md:flex-row flex-col items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="rounded-lg border border-gray-600 p-2">
-                      {/* {icon} */}
                       <UserRound className="h-4 w-4 text-black dark:text-neutral-400" />
                     </div>
 
                     <div>
                       <p className="text-lg sm:text-xl relative z-20 mt-2 font-medium">
-                        Bach Duong Kinh
+                        Ramon Dias Monteiro Silva
                       </p>
+                      <p className="relative z-20 text-sm sm:text-base text-neutral-500 font-medium uppercase"></p>
                       <p className="relative z-20 text-sm sm:text-base text-neutral-500 font-medium uppercase">
-                        Digital Fortress Co., Ltd.
-                      </p>
-                      <p className="relative z-20 text-sm sm:text-base text-neutral-500 font-medium uppercase">
-                        Frontend Developer
+                        Mobile Developer
                       </p>
                     </div>
                   </div>
@@ -77,17 +74,19 @@ export function MyInformation() {
                 </div>
                 <div className="space-y-6 flex-1 flex flex-col items-center justify-center">
                   <h3 className="pt-0.5 text-lg font-bold text-balance text-black md:text-4xl dark:text-white">
-                    Passionate about technology and frontend craftsmanship.
+                    Apaixonado por tecnologia e desenvolvimento mobile.
                   </h3>
                   <h2 className="text-sm/[1.125rem] text-black md:text-base/[1.375rem] dark:text-neutral-400 [&_b]:md:font-semibold [&_strong]:md:font-semibold">
-                    I thrive on learning, leading, and solving complex
-                    challenges — always reflecting on how each experience
-                    contributes to personal and team growth.
+                    Tenho foco em aprendizado contínuo, resolução de problemas e
+                    na construção de aplicações mobile escaláveis, sempre com
+                    atenção às necessidades do usuário, refletindo sobre como
+                    cada experiência contribui para meu crescimento profissional
+                    e para a evolução do time.
                   </h2>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Expertise</h3>
+                  <h3 className="text-lg font-semibold">Especialidades</h3>
                   <KeySkills />
                 </div>
 
@@ -102,10 +101,11 @@ export function MyInformation() {
         numRows={1}
         className="!text-xl md:!text-3xl opacity-50 my-6"
       >
-        ⭐ Personal Portfolio
+        React Native &#8212; Expo &#8212; Android &#8212; iOS &#8212; Clean Code
+        &#8212; Component Architecture &#8212; Performance Optimization &#8212;
       </VelocityScroll>
     </>
-  )
+  );
 }
 
 const SocialNetwork = () => {
@@ -125,13 +125,13 @@ const SocialNetwork = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const KeyAchievements = () => {
-  const { theme, systemTheme } = useTheme()
+  const { theme, systemTheme } = useTheme();
 
-  const currentTheme = theme === "system" ? systemTheme : theme
+  const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6"
@@ -162,7 +162,7 @@ const KeyAchievements = () => {
           Clean Code
         </h4>
         <p className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
-          Crafting maintainable, elegant solutions
+          Desenvolvo código limpo e de fácil manutenção.
         </p>
       </motion.div>
 
@@ -191,7 +191,7 @@ const KeyAchievements = () => {
           Component Architecture
         </h4>
         <p className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
-          Building scalable, reusable systems
+          Crio componentes reutilizáveis e escaláveis.
         </p>
       </motion.div>
 
@@ -220,17 +220,17 @@ const KeyAchievements = () => {
           Performance
         </h4>
         <p className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
-          Optimizing for speed and efficiency
+          Otimizo aplicações mobile para melhor desempenho e fluidez.
         </p>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
 const KeySkills = () => {
-  const { theme, systemTheme } = useTheme()
+  const { theme, systemTheme } = useTheme();
 
-  const currentTheme = theme === "system" ? systemTheme : theme
+  const currentTheme = theme === "system" ? systemTheme : theme;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -240,7 +240,7 @@ const KeySkills = () => {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   // Animation variants for individual skill badges
   const badgeVariants = {
@@ -250,17 +250,17 @@ const KeySkills = () => {
       y: 0,
       transition: { type: "spring", stiffness: 300, damping: 20 },
     },
-  }
+  };
 
   // Array of skills with their colors for hover effects
   const skills = [
     {
-      name: "React",
+      name: "React Native",
       color: "rgb(219 234 254)",
       darkColor: "rgba(59, 130, 246, 0.2)",
     },
     {
-      name: "Next.js",
+      name: "Expo",
       color: "rgb(224 231 255)",
       darkColor: "rgba(99, 102, 241, 0.2)",
     },
@@ -270,31 +270,56 @@ const KeySkills = () => {
       darkColor: "rgba(59, 130, 246, 0.2)",
     },
     {
-      name: "Tailwind CSS",
+      name: "NodeJS",
       color: "rgb(207 250 254)",
       darkColor: "rgba(6, 182, 212, 0.2)",
     },
     {
-      name: "Redux",
+      name: "Express",
       color: "rgb(237 233 254)",
       darkColor: "rgba(124, 58, 237, 0.2)",
     },
     {
-      name: "UI/UX",
+      name: "Zustand",
+      color: "rgb(254 240 138)",
+      darkColor: "rgba(234, 179, 8, 0.2)",
+    },
+    {
+      name: "Redux",
+      color: "rgb(216 180 254)",
+      darkColor: "rgba(168, 85, 247, 0.2)",
+    },
+    {
+      name: "MMKV",
+      color: "rgb(187 247 208)",
+      darkColor: "rgba(34, 197, 94, 0.2)",
+    },
+    {
+      name: "Sentry",
+      color: "rgb(254 205 211)",
+      darkColor: "rgba(244, 63, 94, 0.2)",
+    },
+    {
+      name: "Zod",
+      color: "rgb(191 219 254)",
+      darkColor: "rgba(59, 130, 246, 0.2)",
+    },
+    {
+      name: "Arquitetura de Software",
       color: "rgb(254 226 226)",
       darkColor: "rgba(239, 68, 68, 0.2)",
     },
     {
-      name: "Responsive Design",
+      name: "Clean Code",
       color: "rgb(220 252 231)",
       darkColor: "rgba(16, 185, 129, 0.2)",
     },
     {
-      name: "Performance Optimization",
+      name: "Performance",
       color: "rgb(254 243 199)",
       darkColor: "rgba(245, 158, 11, 0.2)",
     },
-  ]
+  ];
   return (
     <motion.div
       className="flex flex-wrap gap-2"
@@ -326,5 +351,5 @@ const KeySkills = () => {
         </motion.div>
       ))}
     </motion.div>
-  )
-}
+  );
+};
