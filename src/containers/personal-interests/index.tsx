@@ -47,7 +47,7 @@ const SkeletonOne = () => {
       <EvervaultCard
         text={
           <a
-            href="/files/kinhbach_resume.pdf"
+            href="/files/ramondias_curriculo.pdf"
             download
             className="flex flex-col items-center justify-center"
           >
@@ -99,8 +99,7 @@ const items = [
     title: "Baixe o meu Currículo",
     description: (
       <span className="text-sm">
-        Um resumo da minha experiência, projetos e habilidades — disponível para
-        download.
+        Um resumo da minha experiência e habilidades — disponível para download.
       </span>
     ),
     header: <SkeletonOne />,
