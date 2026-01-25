@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import {
   IconArrowUp,
+  IconBrandLinkedin,
   IconBrandGithub,
   IconMenu2,
   IconX,
@@ -112,6 +113,14 @@ export const Header = () => {
             ))}
           </div>
           <div className="flex items-center gap-2">
+            <a
+              href={"https://www.linkedin.com/in/ramondiasmonteiro/"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border p-2 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-300"
+            >
+              <IconBrandLinkedin />
+            </a>
             <a
               href={"https://github.com/ramon541"}
               target="_blank"
