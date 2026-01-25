@@ -1,25 +1,38 @@
 export const TECH_STACK = [
+  // Mobile
+  "react",
+  "expo",
+
+  // Linguagens
   "typescript",
   "javascript",
-  "dart",
-  "java",
-  "react",
-  "html5",
-  "css3",
-  "prisma",
-  "amazonaws",
+
+  // Backend
+  "nodedotjs",
+  "express",
+
+  // Bancos de dados
+  "mysql",
+  "sqlite",
   "postgresql",
-  "firebase",
-  "nginx",
-  "vercel",
-  "testinglibrary",
-  "jest",
-  "cypress",
-  "docker",
+
+  // State / Storage / Monitoramento
+  "redux",
+  "sentry",
+
+  // Versionamento
   "git",
-  "jira",
-  "github",
-  "gitlab",
+
+  // Web (base)
+  "html5",
+  "css",
+
+  // Ferramentas
   "visualstudiocode",
-  "figma",
-]
+  "jira",
+
+  "android",
+  "apple",
+  "tailwindcss",
+  "reactquery",
+];

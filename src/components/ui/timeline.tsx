@@ -1,61 +1,64 @@
-"use client"
-import { useScroll, useTransform, motion } from "framer-motion"
-import type React from "react"
-import { useEffect, useRef, useState } from "react"
+"use client";
+import { useScroll, useTransform, motion } from "framer-motion";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
-  title: string
-  content: React.ReactNode
+  title: string;
+  content: React.ReactNode;
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [height, setHeight] = useState(0)
+  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
 
   // Improve the height calculation with a resize observer
   useEffect(() => {
-    if (!ref.current) return
+    if (!ref.current) return;
 
     const updateHeight = () => {
       if (ref.current) {
-        const rect = ref.current.getBoundingClientRect()
-        setHeight(rect.height)
+        const rect = ref.current.getBoundingClientRect();
+        setHeight(rect.height);
       }
-    }
+    };
 
     // Initial calculation
-    updateHeight()
+    updateHeight();
 
     // Set up resize observer to handle window resizing
-    const resizeObserver = new ResizeObserver(updateHeight)
-    resizeObserver.observe(ref.current)
+    const resizeObserver = new ResizeObserver(updateHeight);
+    resizeObserver.observe(ref.current);
 
     return () => {
-      if (ref.current) resizeObserver.unobserve(ref.current)
-    }
-  }, [])
+      if (ref.current) resizeObserver.unobserve(ref.current);
+    };
+  }, []);
 
   // Improve scroll tracking with better offset values
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 20%", "end 80%"],
-  })
+  });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height])
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1])
+  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
     <div className="w-full md:px-10" ref={containerRef}>
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl font-bold">
-          My Journey as a Frontend Developer
+          Minha jornada como Desenvolvedor Mobile
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-3xl italic">
-          I started my journey at iLotusLand and spent 2 years building IoT
-          platforms. For the past 2 years, I&#39;ve been growing at
-          DigitalFortress — and the journey continues. <br /> Here&apos;s a
-          timeline of my journey.
+          Iniciei minha trajetória profissional atuando no desenvolvimento de
+          aplicações mobile, evoluindo tecnicamente em projetos reais e
+          ambientes corporativos. <br />
+          Ao longo dos anos, venho construindo soluções com React Native e Expo,
+          participando de todo o ciclo de desenvolvimento e crescendo junto aos
+          times pelos quais passei. <br />
+          Abaixo, um pouco da minha jornada.
         </p>
       </div>
 
@@ -98,5 +101,5 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

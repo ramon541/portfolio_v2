@@ -7,7 +7,10 @@ import { cn } from "@/lib/utils";
 import { IconClipboardCopy } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { StackCloud } from "./stack-cloud";
+import { Blocks } from "lucide-react";
 
+//= ==============================================================================================
 export function PersonalInterests() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -37,6 +40,7 @@ export function PersonalInterests() {
   );
 }
 
+//= ==============================================================================================
 const SkeletonOne = () => {
   return (
     <motion.div
@@ -94,6 +98,26 @@ const SkeletonOne = () => {
   );
 };
 
+//= ==============================================================================================
+const SkeletonTwo = () => {
+  return (
+    <motion.div
+      initial="initial"
+      animate="animate"
+      whileHover="hover"
+      className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2 "
+    >
+      <div className="relative flex h-full w-full flex-col items-center justify-center">
+        <StackCloud />
+        <Pointer>
+          <div className="text-2xl">👆</div>
+        </Pointer>
+      </div>
+    </motion.div>
+  );
+};
+
+//= ==============================================================================================
 const items = [
   {
     title: "Baixe o meu Currículo",
@@ -105,5 +129,17 @@ const items = [
     header: <SkeletonOne />,
     className: "md:col-span-1",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+  },
+  {
+    title: "Tech Stack",
+    description: (
+      <span className="text-sm">
+        Tecnologias e ferramentas que utilizo no dia a dia para desenvolver
+        aplicações mobile modernas e performáticas.
+      </span>
+    ),
+    header: <SkeletonTwo />,
+    className: "md:col-span-1",
+    icon: <Blocks className="h-4 w-4 text-neutral-500" />,
   },
 ];

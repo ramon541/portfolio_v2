@@ -7,6 +7,10 @@ export const LayoutWithHeader = ({
 }: {
   children: React.ReactNode;
 }) => {
+  function getYear(): number {
+    return new Date().getFullYear();
+  }
+
   return (
     <div className="font-[family-name:var(--font-exo2)] font-medium w-screen">
       <HeroBackground>
@@ -16,7 +20,7 @@ export const LayoutWithHeader = ({
           {children}
         </main>
         <footer className="text-sm md:text-lg row-start-3 flex gap-[24px] flex-wrap items-center justify-center text-zinc-600 p-4">
-          © 2026 Ramon Dias. Todos os direitos reservados.
+          © {getYear()} Ramon Dias. Todos os direitos reservados.
         </footer>
       </HeroBackground>
     </div>
