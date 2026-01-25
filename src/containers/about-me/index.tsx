@@ -15,28 +15,6 @@ export function MyInformation() {
     <>
       <div className="flex flex-col gap-6">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
-          {/* <Card className="col-span-1 md:col-span-1 lg:col-span-2 dark:bg-black/50 bg-white/50 p-0 order-2 md:order-1">
-            <CardContent className="!p-0 h-full">
-              <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
-                <Image
-                  src="/images/Subject4.png"
-                  alt="avatar"
-                  width={1000}
-                  height={1000}
-                  className="z-10 object-contain md:translate-y-32 hidden dark:block"
-                />
-
-                <Image
-                  src="/images/Subject5.png"
-                  alt="avatar"
-                  width={1000}
-                  height={1000}
-                  className="z-10 object-contain md:translate-y-32 dark:hidden"
-                />
-                <Ripple className="" />
-              </div>
-            </CardContent>
-          </Card> */}
           <div className="col-span-1 md:col-span-1 lg:col-span-2 dark:bg-black/50 bg-white/50 p-0 order-2 md:order-1">
             <MyResume />
           </div>

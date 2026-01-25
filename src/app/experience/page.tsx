@@ -1,36 +1,43 @@
-import { FullScreen } from "@/components/full-screen"
-import { ExperienceTimeline } from "./containers/experience-timeline"
+import { FullScreen } from "@/components/full-screen";
+import { ExperienceTimeline } from "./containers/experience-timeline";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Experience | Kinh Dev",
+export const metadata: Metadata = {
+  title: "Experiência | Ramon Dias - Desenvolvedor Mobile",
   description:
-    "Explore the professional journey of Kinh Dev - frontend developer with experience in modern JavaScript frameworks.",
+    "Explore a jornada profissional de Ramon Dias no desenvolvimento mobile com React Native e Expo. Conheça projetos e experiências técnicas ao longo da carreira.",
+  keywords: [
+    "Desenvolvedor Mobile",
+    "React Native",
+    "Expo",
+    "Experiência Profissional",
+    "Desenvolvedor Android",
+    "Desenvolvedor iOS",
+    "Carreira Mobile",
+  ],
   openGraph: {
-    title: "Experience | Kinh Dev",
+    title: "Experiência | Ramon Dias - Desenvolvedor Mobile",
     description:
-      "Frontend Developer with hands-on experience in React, Next.js, and modern UI/UX design.",
-    url: "https://kinhdev.id.vn/experience",
-    siteName: "Kinh Dev",
+      "Conheça a trajetória profissional de Ramon Dias em desenvolvimento mobile com React Native e Expo.",
+    url: "https://ramondias.dev.br/experience",
+    type: "website",
     images: [
-      // {
-      //   url: "https://kinhdev.id.vn/images/seo/experience-og-image.png",
-      //   width: 1200,
-      //   height: 630,
-      //   alt: "Kinh Dev Experience Page",
-      // },
+      {
+        url: "/images/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Ramon Dias - Experiência Profissional",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Experience | Kinh Dev",
+    title: "Experiência | Ramon Dias - Desenvolvedor Mobile",
     description:
-      "Check out Kinh Dev's past work and achievements in frontend development.",
-    //   images: ["https://kinhdev.id.vn/images/seo/experience-og-image.png"],
+      "Veja a experiência profissional de Ramon Dias com React Native, Expo e desenvolvimento mobile.",
+    images: ["/images/banner.png"],
   },
-  alternates: {
-    canonical: "https://kinhdev.id.vn/experience",
-  },
-}
+};
 
 export default function Page() {
   return (
@@ -39,5 +46,5 @@ export default function Page() {
         <ExperienceTimeline />
       </FullScreen>
     </div>
-  )
+  );
 }

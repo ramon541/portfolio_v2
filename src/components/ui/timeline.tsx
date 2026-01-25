@@ -49,16 +49,15 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     <div className="w-full md:px-10" ref={containerRef}>
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl font-bold">
-          Minha jornada como Desenvolvedor Mobile
+          Minha Jornada como Desenvolvedor Mobile
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-3xl italic">
           Iniciei minha trajetória profissional atuando no desenvolvimento de
           aplicações mobile, evoluindo tecnicamente em projetos reais e
-          ambientes corporativos. <br />
-          Ao longo dos anos, venho construindo soluções com React Native e Expo,
-          participando de todo o ciclo de desenvolvimento e crescendo junto aos
-          times pelos quais passei. <br />
-          Abaixo, um pouco da minha jornada.
+          ambientes corporativos. Ao longo dos anos, venho construindo soluções
+          com React Native e Expo, participando de todo o ciclo de
+          desenvolvimento e crescendo junto aos times pelos quais passei.
+          Abaixo, um pouco da minha jornada:
         </p>
       </div>
 

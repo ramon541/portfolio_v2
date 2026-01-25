@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["/images/banner.png"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo_wt.png",
   },
 };
 

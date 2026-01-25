@@ -120,7 +120,7 @@ const SkeletonTwo = () => {
 //= ==============================================================================================
 const items = [
   {
-    title: "Baixe o meu Currículo",
+    title: "Sobre mim",
     description: (
       <span className="text-sm">
         Um resumo da minha experiência e habilidades — disponível para download.

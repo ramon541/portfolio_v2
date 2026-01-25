@@ -5,24 +5,14 @@ import {
   IconArrowUp,
   IconBrandLinkedin,
   IconBrandGithub,
-  IconMenu2,
-  IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ModeToggle } from "../mode-toggle";
-import { Logo } from "../svg/logo";
 import { Button } from "../ui/button";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "../ui/drawer";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { BlurImage } from "../ui/apple-cards-carousel";
+import { useTheme } from "next-themes";
 
 //= ==============================================================================================
 const links = [
@@ -38,11 +28,6 @@ const links = [
     title: "Projetos",
     href: "/projects",
   },
-  {
-    title: "Sobre",
-    href: "/about",
-    isComingSoon: true,
-  },
 ];
 
 const pathNameDisableHeaderScroll = [""];
@@ -51,7 +36,8 @@ const pathNameDisableHeaderScroll = [""];
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const { theme } = useTheme();
 
   const pathname = usePathname();
 
@@ -101,7 +87,12 @@ export const Header = () => {
           )}
         >
           <div className="flex items-center gap-2">
-            <Logo className="size-14" />
+            <BlurImage
+              src={theme === "dark" ? "/logo_wt.png" : "/logo_bk.png"}
+              alt="Logo"
+              width={42}
+              height={42}
+            />
           </div>
           <div className="flex-1 items-center gap-3 justify-center hidden sm:flex">
             {links.map((link) => (
@@ -130,66 +121,6 @@ export const Header = () => {
               <IconBrandGithub />
             </a>
             <ModeToggle />
-
-            <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-              <DrawerTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="border size-10 rounded-xl p-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-300 sm:hidden"
-                >
-                  <IconMenu2 />
-                  <span className="sr-only">Menu</span>
-                </Button>
-              </DrawerTrigger>
-              <DrawerContent className="min-h-dvh">
-                <DrawerHeader className="flex justify-between">
-                  <DrawerTitle className="flex items-center gap-2">
-                    <Logo className="size-14" />
-                    kinhdev.id.vn
-                  </DrawerTitle>
-                  <DrawerClose
-                    asChild
-                    className="self-end -translate-y-14 z-50"
-                  >
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      asChild
-                      className="size-8"
-                    >
-                      <IconX />
-                    </Button>
-                  </DrawerClose>
-                </DrawerHeader>
-
-                <div className="px-6 flex flex-col gap-4">
-                  {links.map((link) => (
-                    <Link
-                      key={link.title}
-                      href={link.href}
-                      className="flex items-center gap-2 font-medium text-xl"
-                      onClick={() => setIsDrawerOpen(false)}
-                    >
-                      {link.title}
-                      {link.isComingSoon && (
-                        <span className="text-sm bg-blue-300/10 text-blue-500 px-2 py-1 rounded-full">
-                          Coming Soon
-                        </span>
-                      )}
-                    </Link>
-                  ))}
-                  <Separator />
-                  <iframe
-                    src="https://github.com/sponsors/kinhdev24/button"
-                    title="Sponsor kinhdev24"
-                    height="32"
-                    width="114"
-                    style={{ border: "0", borderRadius: "6px" }}
-                  ></iframe>
-                </div>
-              </DrawerContent>
-            </Drawer>
           </div>
         </div>
       </header>
