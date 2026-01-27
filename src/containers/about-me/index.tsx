@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "motion/react";
 
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
@@ -10,7 +11,7 @@ import { Code, Layers, UserRound, Zap } from "lucide-react";
 import { useTheme } from "next-themes";
 import { MyResume } from "../my-resume";
 
-export function MyInformation() {
+export const MyInformation = memo(function MyInformation() {
   return (
     <>
       <div className="flex flex-col gap-6">
@@ -84,9 +85,9 @@ export function MyInformation() {
       </VelocityScroll>
     </>
   );
-}
+});
 
-const SocialNetwork = () => {
+const SocialNetwork = memo(function SocialNetwork() {
   return (
     <div className="relative z-20 mt-4 sm:mt-0">
       <div className="flex flex-wrap items-center gap-2">
@@ -104,9 +105,9 @@ const SocialNetwork = () => {
       </div>
     </div>
   );
-};
+});
 
-const KeyAchievements = () => {
+const KeyAchievements = memo(function KeyAchievements() {
   const { theme, systemTheme } = useTheme();
 
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -203,9 +204,9 @@ const KeyAchievements = () => {
       </motion.div>
     </div>
   );
-};
+});
 
-const KeySkills = () => {
+const KeySkills = memo(function KeySkills() {
   const { theme, systemTheme } = useTheme();
 
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -330,4 +331,4 @@ const KeySkills = () => {
       ))}
     </motion.div>
   );
-};
+});
