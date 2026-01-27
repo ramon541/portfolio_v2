@@ -9,6 +9,7 @@ import { MY_NETWORKS } from "@/data/my-networks";
 import { Code, Layers, UserRound, Zap } from "lucide-react";
 import { useTheme } from "next-themes";
 import { MyResume } from "../my-resume";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export const MyInformation = memo(function MyInformation() {
   return (
@@ -88,6 +89,11 @@ const SocialNetwork = memo(function SocialNetwork() {
             target="_blank"
             rel="noopener noreferrer"
             className="border p-2 rounded-xl sm:rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-300"
+            onClick={() =>
+              sendGAEvent("event", `click_${network.name.toLowerCase()}`, {
+                page_location: window.location.href,
+              })
+            }
           >
             <network.icon className="size-5 sm:size-6 md:size-7 lg:size-8" />
           </a>

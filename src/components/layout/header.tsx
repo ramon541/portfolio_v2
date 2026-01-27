@@ -24,6 +24,7 @@ import {
   DrawerTrigger,
 } from "../ui/drawer";
 import { Separator } from "@radix-ui/react-dropdown-menu";
+import { sendGAEvent } from "@next/third-parties/google";
 
 //= ==============================================================================================
 const links = [
@@ -114,6 +115,11 @@ export const Header = memo(function Header() {
                 key={link.title}
                 title={link.title}
                 href={link.href}
+                onClick={() =>
+                  sendGAEvent("event", `troca-de-pagina-${link.title}`, {
+                    page_location: window.location.href,
+                  })
+                }
               />
             ))}
           </div>
@@ -123,6 +129,11 @@ export const Header = memo(function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="border p-2 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-300"
+              onClick={() =>
+                sendGAEvent("event", "click_linkedin_header", {
+                  page_location: window.location.href,
+                })
+              }
             >
               <IconBrandLinkedin />
             </a>
@@ -131,6 +142,11 @@ export const Header = memo(function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="border p-2 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-300"
+              onClick={() =>
+                sendGAEvent("event", "click_github_header", {
+                  page_location: window.location.href,
+                })
+              }
             >
               <IconBrandGithub />
             </a>
@@ -234,9 +250,11 @@ const ScrollToTopButton = memo(function ScrollToTopButton() {
 const HeaderLink = memo(function HeaderLink({
   title,
   href,
+  onClick,
 }: {
   title: string;
   href: string;
+  onClick?: VoidFunction;
 }) {
   const pathname = usePathname() || "/";
   const isActive = href === pathname;
@@ -249,7 +267,9 @@ const HeaderLink = memo(function HeaderLink({
           : "dark:hover:bg-zinc-800 hover:bg-zinc-100",
       )}
     >
-      <Link href={href}>{title}</Link>
+      <Link href={href} onClick={onClick}>
+        {title}
+      </Link>
     </div>
   );
 });
