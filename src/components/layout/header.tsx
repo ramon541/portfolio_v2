@@ -10,7 +10,7 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { ModeToggle } from "../mode-toggle";
 import { Button } from "../ui/button";
 import { BlurImage } from "../ui/apple-cards-carousel";
@@ -35,16 +35,12 @@ const links = [
     title: "Experiência",
     href: "/experience",
   },
-  // {
-  //   title: "Projetos",
-  //   href: "/projects",
-  // },
 ];
 
 const pathNameDisableHeaderScroll = [""];
 
 //= ==============================================================================================
-export const Header = () => {
+export const Header = memo(function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -199,9 +195,9 @@ export const Header = () => {
       {isDisableHeaderScroll && <ScrollToTopButton />}
     </>
   );
-};
+});
 
-const ScrollToTopButton = () => {
+const ScrollToTopButton = memo(function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -233,9 +229,15 @@ const ScrollToTopButton = () => {
       <IconArrowUp className="text-white" />
     </Button>
   );
-};
+});
 
-const HeaderLink = ({ title, href }: { title: string; href: string }) => {
+const HeaderLink = memo(function HeaderLink({
+  title,
+  href,
+}: {
+  title: string;
+  href: string;
+}) {
   const pathname = usePathname() || "/";
   const isActive = href === pathname;
   return (
@@ -250,4 +252,4 @@ const HeaderLink = ({ title, href }: { title: string; href: string }) => {
       <Link href={href}>{title}</Link>
     </div>
   );
-};
+});

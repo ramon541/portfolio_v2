@@ -1,14 +1,16 @@
+import { memo } from "react";
 import { cn } from "@/lib/utils";
 import { motion, MotionProps } from "motion/react";
 
 interface LineShadowTextProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
     MotionProps {
   shadowColor?: string;
   as?: React.ElementType;
 }
 
-export function LineShadowText({
+export const LineShadowText = memo(function LineShadowText({
   children,
   shadowColor = "black",
   className,
@@ -39,4 +41,4 @@ export function LineShadowText({
       {content}
     </MotionComponent>
   );
-}
+});

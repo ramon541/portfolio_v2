@@ -1,14 +1,13 @@
 import { cn } from "@/lib/utils";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, memo } from "react";
 
-export interface AnimatedGradientTextProps
-  extends ComponentPropsWithoutRef<"div"> {
+export interface AnimatedGradientTextProps extends ComponentPropsWithoutRef<"div"> {
   speed?: number;
   colorFrom?: string;
   colorTo?: string;
 }
 
-export function AnimatedGradientText({
+export const AnimatedGradientText = memo(function AnimatedGradientText({
   children,
   className,
   speed = 1,
@@ -34,4 +33,4 @@ export function AnimatedGradientText({
       {children}
     </span>
   );
-}
+});

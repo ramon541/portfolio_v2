@@ -1,16 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import { Header } from "./header";
 import { HeroBackground } from "./hero-background";
 
-export const LayoutWithHeader = ({
+const CURRENT_YEAR = new Date().getFullYear();
+
+export const LayoutWithHeader = memo(function LayoutWithHeader({
   children,
 }: {
   children: React.ReactNode;
-}) => {
-  function getYear(): number {
-    return new Date().getFullYear();
-  }
-
+}) {
   return (
     <div className="font-[family-name:var(--font-exo2)] font-medium w-screen">
       <HeroBackground>
@@ -20,9 +18,9 @@ export const LayoutWithHeader = ({
           {children}
         </main>
         <footer className="text-sm md:text-lg row-start-3 flex gap-[24px] flex-wrap items-center justify-center text-zinc-600 p-4">
-          © {getYear()}, Ramon Dias. Todos os direitos reservados.
+          © {CURRENT_YEAR}, Ramon Dias. Todos os direitos reservados.
         </footer>
       </HeroBackground>
     </div>
   );
-};
+});

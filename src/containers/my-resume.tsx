@@ -9,8 +9,8 @@ export function MyResume() {
           <BlurImage
             src="/images/foto.png"
             alt="image"
-            width={450}
-            height={400}
+            width={880}
+            height={1216}
             className="rounded-5xl object-contain"
           />
         </div>

@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import type { CSSProperties } from "react"
-import React, { useEffect, useId, useRef } from "react"
+import type { CSSProperties } from "react";
+import React, { memo, useEffect, useId, useRef } from "react";
 
 interface AuroraTextProps {
-  children: React.ReactNode
-  className?: string
-  colors?: string[]
-  speed?: number // 1 is default speed, 2 is twice as fast, 0.5 is half speed
+  children: React.ReactNode;
+  className?: string;
+  colors?: string[];
+  speed?: number; // 1 is default speed, 2 is twice as fast, 0.5 is half speed
 }
 
-export function AuroraText({
+export const AuroraText = memo(function AuroraText({
   children,
   className = "",
   colors = ["#0070F3", "#38bdf8", "#2dd4bf", "#06b6d4", "#3b82f6", "#6366f1"],
   speed = 1,
 }: AuroraTextProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const textRef = useRef<SVGTextElement>(null)
-  const containerRef = useRef<HTMLSpanElement>(null)
-  const [fontSize, setFontSize] = React.useState(0)
-  const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 })
-  const [isReady, setIsReady] = React.useState(false)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const textRef = useRef<SVGTextElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [fontSize, setFontSize] = React.useState(0);
+  const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
+  const [isReady, setIsReady] = React.useState(false);
   const [textStyle, setTextStyle] = React.useState<
     Partial<CSSStyleDeclaration>
-  >({})
-  const maskId = useId()
+  >({});
+  const maskId = useId();
 
   // Updated effect to compute all text styles from parent
   useEffect(() => {
     if (containerRef.current) {
-      const computedStyle = window.getComputedStyle(containerRef.current)
+      const computedStyle = window.getComputedStyle(containerRef.current);
 
       // Extract text-related styles
       const relevantStyles = {
@@ -44,83 +44,83 @@ export function AuroraText({
         fontVariant: computedStyle.fontVariant,
         fontStretch: computedStyle.fontStretch,
         fontFeatureSettings: computedStyle.fontFeatureSettings,
-      }
+      };
 
       requestAnimationFrame(() => {
-        setTextStyle(relevantStyles)
-      })
+        setTextStyle(relevantStyles);
+      });
     }
-  }, [className])
+  }, [className]);
 
   // Updated effect to compute font size from both inline and class styles
   useEffect(() => {
     const updateFontSize = () => {
       if (containerRef.current) {
-        const computedStyle = window.getComputedStyle(containerRef.current)
-        const computedFontSize = parseFloat(computedStyle.fontSize)
+        const computedStyle = window.getComputedStyle(containerRef.current);
+        const computedFontSize = parseFloat(computedStyle.fontSize);
 
         requestAnimationFrame(() => {
-          setFontSize(computedFontSize)
-        })
+          setFontSize(computedFontSize);
+        });
       }
-    }
+    };
 
-    updateFontSize()
-    window.addEventListener("resize", updateFontSize)
+    updateFontSize();
+    window.addEventListener("resize", updateFontSize);
 
-    return () => window.removeEventListener("resize", updateFontSize)
-  }, [className])
+    return () => window.removeEventListener("resize", updateFontSize);
+  }, [className]);
 
   // Update effect to set ready state after dimensions are computed
   useEffect(() => {
     const updateDimensions = () => {
       if (textRef.current) {
-        const bbox = textRef.current.getBBox()
+        const bbox = textRef.current.getBBox();
         setDimensions({
           width: bbox.width,
           height: bbox.height,
-        })
-        setIsReady(true)
+        });
+        setIsReady(true);
       }
-    }
+    };
 
-    updateDimensions()
-    window.addEventListener("resize", updateDimensions)
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
 
-    return () => window.removeEventListener("resize", updateDimensions)
-  }, [children, fontSize])
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [children, fontSize]);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     // Set canvas size
-    canvas.width = dimensions.width
-    canvas.height = dimensions.height
+    canvas.width = dimensions.width;
+    canvas.height = dimensions.height;
 
-    let time = 0
-    const baseSpeed = 0.008 // Original speed as base unit
+    let time = 0;
+    const baseSpeed = 0.008; // Original speed as base unit
 
     function animate() {
-      if (!ctx || !canvas) return
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      time += baseSpeed * speed
+      time += baseSpeed * speed;
 
       colors.forEach((color, i) => {
         const x =
           canvas.width *
           (0.5 +
             Math.cos(time * 0.8 + i * 1.3) * 0.4 +
-            Math.sin(time * 0.5 + i * 0.7) * 0.2)
+            Math.sin(time * 0.5 + i * 0.7) * 0.2);
         const y =
           canvas.height *
           (0.5 +
             Math.sin(time * 0.7 + i * 1.5) * 0.4 +
-            Math.cos(time * 0.6 + i * 0.8) * 0.2)
+            Math.cos(time * 0.6 + i * 0.8) * 0.2);
 
         const gradient = ctx.createRadialGradient(
           x,
@@ -128,21 +128,21 @@ export function AuroraText({
           0,
           x,
           y,
-          canvas.width * 0.4
-        )
+          canvas.width * 0.4,
+        );
 
-        gradient.addColorStop(0, `${color}99`)
-        gradient.addColorStop(0.5, `${color}33`)
-        gradient.addColorStop(1, "#00000000")
+        gradient.addColorStop(0, `${color}99`);
+        gradient.addColorStop(0.5, `${color}33`);
+        gradient.addColorStop(1, "#00000000");
 
-        ctx.fillStyle = gradient
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
-      })
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      });
 
-      requestAnimationFrame(animate)
+      requestAnimationFrame(animate);
     }
-    animate()
-  }, [dimensions, colors, speed])
+    animate();
+  }, [dimensions, colors, speed]);
 
   return (
     <span
@@ -209,5 +209,5 @@ export function AuroraText({
         />
       </div>
     </span>
-  )
-}
+  );
+});
