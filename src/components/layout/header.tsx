@@ -35,9 +35,10 @@ const pathNameDisableHeaderScroll = [""];
 //= ==============================================================================================
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
 
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const pathname = usePathname();
 
@@ -61,6 +62,10 @@ export const Header = () => {
   }, [isDisableHeaderScroll]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     handleScroll();
@@ -69,6 +74,12 @@ export const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll, isDisableHeaderScroll]);
+
+  const logoSrc = mounted
+    ? resolvedTheme === "dark"
+      ? "/logo_wt.png"
+      : "/logo_bk.png"
+    : "/logo_bk.png";
 
   return (
     <>
@@ -87,12 +98,7 @@ export const Header = () => {
           )}
         >
           <div className="flex items-center gap-2">
-            <BlurImage
-              src={theme === "dark" ? "/logo_wt.png" : "/logo_bk.png"}
-              alt="Logo"
-              width={42}
-              height={42}
-            />
+            <BlurImage src={logoSrc} alt="Logo" width={42} height={42} />
           </div>
           <div className="flex-1 items-center gap-3 justify-center hidden sm:flex">
             {links.map((link) => (
