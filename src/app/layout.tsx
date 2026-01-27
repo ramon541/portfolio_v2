@@ -1,8 +1,6 @@
 import { LayoutWithHeader } from "@/components/layout/layout-with-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 import { Exo_2 } from "next/font/google";
@@ -72,8 +70,6 @@ export default function RootLayout({
         >
           <LayoutWithHeader>{children}</LayoutWithHeader>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

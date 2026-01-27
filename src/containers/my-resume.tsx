@@ -1,26 +1,20 @@
 "use client";
 import { BlurImage } from "@/components/ui/apple-cards-carousel";
-import { Lens } from "@/components/ui/lens";
-import { useState } from "react";
 
 export function MyResume() {
-  const [hovering, setHovering] = useState(false);
-
   return (
     <div>
       <div className="w-full relative rounded-3xl overflow-hidden max-w-md mx-auto bg-gradient-to-r from-[#1D2235] to-[#121318]">
         <div className="relative z-10">
-          <Beams />
-          <Lens hovering={hovering} setHovering={setHovering}>
-            <BlurImage
-              src="/images/foto.png"
-              alt="image"
-              width={450}
-              height={400}
-              className="rounded-5xl object-contain"
-            />
-          </Lens>
+          <BlurImage
+            src="/images/foto.png"
+            alt="image"
+            width={450}
+            height={400}
+            className="rounded-5xl object-contain"
+          />
         </div>
+        <Beams />
       </div>
     </div>
   );
