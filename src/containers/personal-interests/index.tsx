@@ -9,6 +9,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { StackCloud } from "./stack-cloud";
 import { Blocks } from "lucide-react";
+import { sendGAEvent } from "@next/third-parties/google";
 
 //= ==============================================================================================
 export function PersonalInterests() {
@@ -54,6 +55,12 @@ const SkeletonOne = () => {
             href="/files/ramondias_curriculo.pdf"
             download
             className="flex flex-col items-center justify-center"
+            onClick={() =>
+              sendGAEvent("event", "download_curriculo", {
+                file_name: "ramondias_curriculo.pdf",
+                page_location: window.location.href,
+              })
+            }
           >
             Currículo
             <div className="text-sm text-gray-500">(Clique para baixar)</div>
