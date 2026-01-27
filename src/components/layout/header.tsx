@@ -5,6 +5,8 @@ import {
   IconArrowUp,
   IconBrandLinkedin,
   IconBrandGithub,
+  IconMenu2,
+  IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +15,15 @@ import { ModeToggle } from "../mode-toggle";
 import { Button } from "../ui/button";
 import { BlurImage } from "../ui/apple-cards-carousel";
 import { useTheme } from "next-themes";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../ui/drawer";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 
 //= ==============================================================================================
 const links = [
@@ -35,6 +46,7 @@ const pathNameDisableHeaderScroll = [""];
 //= ==============================================================================================
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -127,6 +139,59 @@ export const Header = () => {
               <IconBrandGithub />
             </a>
             <ModeToggle />
+
+            <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+              <DrawerTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="border size-10 rounded-xl p-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-300 sm:hidden"
+                >
+                  <IconMenu2 />
+                  <span className="sr-only">Menu</span>
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent className="min-h-dvh">
+                <DrawerHeader className="flex justify-between">
+                  <DrawerTitle className="flex items-center gap-2">
+                    <BlurImage
+                      src={logoSrc}
+                      alt="Logo"
+                      width={42}
+                      height={42}
+                    />
+                    Ramon Dias
+                  </DrawerTitle>
+                  <DrawerClose
+                    asChild
+                    className="self-end -translate-y-14 z-50"
+                  >
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      asChild
+                      className="size-8"
+                    >
+                      <IconX />
+                    </Button>
+                  </DrawerClose>
+                </DrawerHeader>
+
+                <div className="px-6 flex flex-col gap-4">
+                  {links.map((link) => (
+                    <Link
+                      key={link.title}
+                      href={link.href}
+                      className="flex items-center gap-2 font-medium text-xl"
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                  <Separator />
+                </div>
+              </DrawerContent>
+            </Drawer>
           </div>
         </div>
       </header>
