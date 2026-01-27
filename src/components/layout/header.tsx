@@ -24,10 +24,10 @@ const links = [
     title: "Experiência",
     href: "/experience",
   },
-  {
-    title: "Projetos",
-    href: "/projects",
-  },
+  // {
+  //   title: "Projetos",
+  //   href: "/projects",
+  // },
 ];
 
 const pathNameDisableHeaderScroll = [""];

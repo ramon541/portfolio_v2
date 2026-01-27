@@ -28,7 +28,6 @@ export const TECH_STACK = [
   "css",
 
   // Ferramentas
-  "visualstudiocode",
   "jira",
 
   "android",
