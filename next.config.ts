@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     // reactCompiler: true,
   },
+  output: "standalone",
   images: {
     remotePatterns: [
       { hostname: "pbs.twimg.com" },
