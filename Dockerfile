@@ -15,8 +15,8 @@ FROM base AS deps
 
 USER nextjs
 
-COPY --chown=nextjs:nextjs package.json package-lock.json* ./
-RUN npm ci
+COPY --chown=nextjs:nextjs package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
 # ========================
 # BUILDER
@@ -30,7 +30,7 @@ COPY --chown=nextjs:nextjs . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm run build
+RUN yarn build
 
 # ========================
 # PRODUCTION
