@@ -1,22 +1,48 @@
 # ========================
+# BASE
+# ========================
+FROM node:20-alpine@sha256:afdf98210b07b586eb71fa22ba2e432e058e4cd1304d31ed60888755b8c865fb AS base
+
+RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
+RUN mkdir -p /app && chown nextjs:nextjs /app
+
+WORKDIR /app
+
+# ========================
+# DEPS
+# ========================
+FROM base AS deps
+
+USER nextjs
+
+COPY --chown=nextjs:nextjs package.json package-lock.json* ./
+RUN npm ci
+
+# ========================
+# BUILDER
+# ========================
+FROM base AS builder
+
+USER nextjs
+
+COPY --from=deps --chown=nextjs:nextjs /app/node_modules ./node_modules
+COPY --chown=nextjs:nextjs . .
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN npm run build
+
+# ========================
 # PRODUCTION
 # ========================
 FROM base AS production
 
-WORKDIR /app
-
 ENV NODE_ENV=production
 ENV PORT=3000
 
-# cria usuário sem privilégios
-RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
-
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
-
-# permissões
-RUN chown -R nextjs:nextjs /app
+COPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nextjs /app/public ./public
 
 USER nextjs
 
