@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   /* config options here */
   basePath: "",
   experimental: {
@@ -8,12 +9,14 @@ const nextConfig: NextConfig = {
   },
   output: "standalone",
   images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60,
     remotePatterns: [
-      { hostname: "pbs.twimg.com" },
-      { hostname: "yt3.googleusercontent.com" },
-      { hostname: "cdn.prod.website-files.com" },
-      { hostname: "assets.aceternity.com" },
-      { hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "pbs.twimg.com" },
+      { protocol: "https", hostname: "yt3.googleusercontent.com" },
+      { protocol: "https", hostname: "cdn.prod.website-files.com" },
+      { protocol: "https", hostname: "assets.aceternity.com" },
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
 };
