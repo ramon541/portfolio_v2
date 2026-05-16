@@ -37,8 +37,6 @@ RUN yarn build
 # ========================
 FROM base AS production
 
-RUN apk add --no-cache wget
-
 ENV NODE_ENV=production
 ENV PORT=3000
 
@@ -49,8 +47,5 @@ COPY --from=builder --chown=nextjs:nextjs /app/public ./public
 USER nextjs
 
 EXPOSE 3000
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=5 \
-  CMD wget --spider -q http://127.0.0.1:3000/ || exit 1
 
 CMD ["node", "server.js"]
