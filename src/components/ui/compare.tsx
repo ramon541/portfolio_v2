@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { IconDotsVertical } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 interface CompareProps {
   firstImage?: string;
@@ -208,9 +209,12 @@ export const Compare = ({
               }}
               transition={{ duration: 0 }}
             >
-              <img
+              <Image
                 alt="first image"
                 src={firstImage}
+                width={0}
+                height={0}
+                sizes="100vw"
                 className={cn(
                   "absolute inset-0  z-20 rounded-2xl shrink-0 w-full h-full select-none",
                   firstImageClassName,
@@ -224,15 +228,26 @@ export const Compare = ({
 
       <AnimatePresence initial={false}>
         {secondImage ? (
-          <motion.img
+          <motion.div
             className={cn(
               "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
               secondImageClassname,
             )}
-            alt="second image"
-            src={secondImage}
-            draggable={false}
-          />
+            transition={{ duration: 0 }}
+          >
+            <Image
+              alt="second image"
+              src={secondImage}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className={cn(
+                "absolute inset-0  z-20 rounded-2xl shrink-0 w-full h-full select-none",
+                secondImageClassname,
+              )}
+              draggable={false}
+            />
+          </motion.div>
         ) : null}
       </AnimatePresence>
     </div>
