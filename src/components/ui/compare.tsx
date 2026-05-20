@@ -86,11 +86,14 @@ export const Compare = ({
     startAutoplay();
   }
 
-  const handleStart = useCallback(() => {
-    if (slideMode === "drag") {
-      setIsDragging(true);
-    }
-  }, [slideMode]);
+  const handleStart = useCallback(
+    (_: number) => {
+      if (slideMode === "drag") {
+        setIsDragging(true);
+      }
+    },
+    [slideMode],
+  );
 
   const handleEnd = useCallback(() => {
     if (slideMode === "drag") {
