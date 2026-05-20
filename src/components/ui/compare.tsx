@@ -5,6 +5,7 @@ import { IconDotsVertical } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Skeleton } from "./skeleton";
 
 const MotionImage = motion(Image);
 
@@ -34,6 +35,7 @@ export const Compare = ({
 }: CompareProps) => {
   const [sliderXPercent, setSliderXPercent] = useState(initialSliderPercentage);
   const [isDragging, setIsDragging] = useState(false);
+  const [isLoading, setIsLoading] = useState({ first: true, second: true });
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -197,6 +199,9 @@ export const Compare = ({
         </motion.div>
       </AnimatePresence>
       <div className="overflow-hidden w-full h-full relative z-20 pointer-events-none">
+        {isLoading.first && (
+          <Skeleton className="absolute inset-0 z-20 rounded-2xl" />
+        )}
         <AnimatePresence initial={false}>
           {firstImage ? (
             <motion.div
@@ -217,12 +222,18 @@ export const Compare = ({
                 className={cn("object-cover select-none", firstImageClassName)}
                 draggable={false}
                 priority
+                onLoad={() =>
+                  setIsLoading((prev) => ({ ...prev, first: false }))
+                }
               />
             </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
 
+      {isLoading.second && (
+        <Skeleton className="absolute inset-0 z-[18] rounded-2xl" />
+      )}
       <AnimatePresence initial={false}>
         {secondImage ? (
           <MotionImage
@@ -236,6 +247,7 @@ export const Compare = ({
             sizes="(max-width: 768px) 100vw, 50vw"
             draggable={false}
             priority
+            onLoad={() => setIsLoading((prev) => ({ ...prev, second: false }))}
           />
         ) : null}
       </AnimatePresence>
