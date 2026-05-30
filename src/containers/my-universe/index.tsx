@@ -121,8 +121,8 @@ export function CompareDemo() {
   return (
     <div className="w-full border rounded-3xl dark:bg-neutral-900 bg-neutral-100 border-neutral-200 dark:border-neutral-800">
       <Compare
-        firstImage="/images/compare/compare1.png"
-        secondImage="/images/compare/compare2.png"
+        firstImage="/images/compare/compare1.webp"
+        secondImage="/images/compare/compare2.webp"
         firstImageClassName="object-cover object-left-top"
         secondImageClassname="object-cover object-left-top"
         className="h-[200px] sm:h-[250px] md:h-[400px] lg:h-[500px] w-full"

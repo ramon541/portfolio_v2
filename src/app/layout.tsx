@@ -61,6 +61,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <link rel="preload" as="image" href="/images/compare/compare1.webp" />
+        <link rel="preload" as="image" href="/images/compare/compare2.webp" />
+      </head>
       <body
         className={`${exo2.variable} antialiased scroll-smooth w-full max-w-dvw overflow-x-hidden`}
       >
