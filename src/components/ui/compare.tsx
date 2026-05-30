@@ -8,6 +8,8 @@ import Image from "next/image";
 import { Skeleton } from "./skeleton";
 
 const MotionImage = motion(Image);
+const BLUR_DATA_URL =
+  "data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAgA0JZQCdAEO/gHOAAA=";
 
 interface CompareProps {
   firstImage?: string;
@@ -222,6 +224,9 @@ export const Compare = ({
                 className={cn("object-cover select-none", firstImageClassName)}
                 draggable={false}
                 priority
+                unoptimized
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
                 onLoad={() =>
                   setIsLoading((prev) => ({ ...prev, first: false }))
                 }
@@ -247,6 +252,9 @@ export const Compare = ({
             sizes="(max-width: 768px) 100vw, 50vw"
             draggable={false}
             priority
+            unoptimized
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
             onLoad={() => setIsLoading((prev) => ({ ...prev, second: false }))}
           />
         ) : null}
