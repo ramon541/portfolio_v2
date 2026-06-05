@@ -7,7 +7,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Skeleton } from "./skeleton";
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 const BLUR_DATA_URL =
   "data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAgA0JZQCdAEO/gHOAAA=";
 
