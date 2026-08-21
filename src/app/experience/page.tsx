@@ -1,6 +1,9 @@
 import { FullScreen } from "@/components/full-screen";
+import { getSiteUrl } from "@/lib/site";
 import { ExperienceTimeline } from "./containers/experience-timeline";
 import type { Metadata } from "next";
+
+const experienceUrl = `${getSiteUrl()}/experience`;
 
 export const metadata: Metadata = {
   title: "Experiência | Ramon Dias - Desenvolvedor Mobile",
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
     title: "Experiência | Ramon Dias - Desenvolvedor Mobile",
     description:
       "Conheça a trajetória profissional de Ramon Dias em desenvolvimento mobile com React Native e Expo.",
-    url: "https://ramondias.dev.br/experience",
+    url: experienceUrl,
     type: "website",
     images: [
       {

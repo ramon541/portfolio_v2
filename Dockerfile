@@ -30,6 +30,10 @@ COPY --chown=nextjs:nextjs . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# SITE_URL is baked into metadata/sitemap/robots at build time.
+ARG SITE_URL=https://ramondias.dev.br
+ENV SITE_URL=$SITE_URL
+
 RUN yarn build
 
 # ========================

@@ -1,5 +1,9 @@
 import { LayoutWithHeader } from "@/components/layout/layout-with-header";
 import { ThemeProvider } from "@/components/theme-provider";
+import {
+  getSiteUrl,
+  isSearchEngineIndexingEnabled,
+} from "@/lib/site";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -12,7 +16,11 @@ const exo2 = Exo_2({
   variable: "--font-exo2",
 });
 
+const siteUrl = getSiteUrl();
+const indexingEnabled = isSearchEngineIndexingEnabled();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Ramon Dias | Portfólio de Desenvolvedor Mobile",
   description:
     "Explore o portfólio de Ramon Dias — Desenvolvedor Mobile especializado em React Native, Expo, TypeScript e tecnologias modernas para aplicações mobile.",
@@ -27,11 +35,14 @@ export const metadata: Metadata = {
     "Desenvolvimento Mobile",
     "Tecnologias Mobile Modernas",
   ],
+  robots: indexingEnabled
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
   openGraph: {
     title: "Ramon Dias | Portfólio de Desenvolvedor Mobile",
     description:
       "Conheça a experiência de Ramon Dias em desenvolvimento mobile com React Native e Expo. Veja projetos, estudos de caso e habilidades técnicas.",
-    url: "https://ramondias.dev.br",
+    url: siteUrl,
     type: "website",
     images: [
       {
