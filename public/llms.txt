@@ -1,0 +1,25 @@
+# Ramon Dias
+
+> Portfólio de Ramon Dias Monteiro Silva, desenvolvedor mobile pleno especializado em React Native, Expo e TypeScript, com apps Android e iOS em produção.
+
+Site pessoal e profissional. Apresenta trajetória, especialidades e formas de contato.
+Não é uma agência, não oferece cursos pagos nem serviços de design/marketing — é o portfólio de um desenvolvedor mobile.
+
+Stack principal: React Native, Expo, TypeScript, Node.js, Zustand, Redux, MMKV, React Query, Zod e Sentry.
+Atua com arquitetura de componentes, clean code, performance e princípios SOLID.
+Experiência desde o fim de 2023: estágio → júnior (2024) → pleno (fim de 2025), incluindo migração de React Native CLI para Expo e compartilhamento de conhecimento (artigos e palestras).
+
+## Páginas
+
+- [Início](https://ramondias.dev.br/): visão geral do portfólio, perfil, especialidades e interesses
+- [Experiência](https://ramondias.dev.br/experience): linha do tempo profissional de 2023 a 2025, destaques e responsabilidades
+
+## Contato e redes
+
+- [LinkedIn](https://www.linkedin.com/in/ramondiasmonteiro/): perfil profissional e experiência
+- [GitHub](https://github.com/ramon541): repositórios e projetos open source
+- [E-mail](mailto:ramondiasmonteiro@gmail.com): contato direto para oportunidades
+
+## Optional
+
+- [Código-fonte deste site](https://github.com/ramon541/portfolio_v2): repositório Next.js deste portfólio
